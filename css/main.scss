@@ -1,0 +1,177 @@
+/* Importing fonts */
+@font-face {
+  font-family: 'Karla';
+  src: url(../fonts/Karla-Regular.ttf);
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --padding: 2em;
+
+  --primary-one: hsl(179, 61%, 34%);
+  --primary-two: hsl(71, 73%, 54%);
+
+  --neutral-one: hsl(204, 43%, 93%);
+  --neutral-two: hsl(218, 22%, 67%);
+}
+
+body {
+  height: 100%;
+  font-family: 'Karla', sans-serif;
+  font-size: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 0.8em;
+}
+
+li {
+  margin-bottom: 0.33em;
+}
+
+p {
+  line-height: 1.5;
+  color: var(--neutral-two);
+}
+
+.grid-container {
+  display: grid;
+  width: 90%;
+  margin: 40px auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  & .card {
+    width: 100%;
+    padding: var(--padding);
+  }
+}
+
+.card {
+  & .card__title {
+    --primary-one: hsl(179, 62%, 43%);
+    color: var(--primary-one);
+    font-size: 1.2rem;
+  }
+
+  & .card__body {
+    font-size: 1rem;
+  }
+
+  & .sub-title {
+    font-size: 1.1rem;
+    color: var(--primary-two);
+  }
+
+  & .price {
+    font-size: 1rem;
+    font-weight: 100;
+    margin-bottom: 0.4em;
+    display: flex;
+    align-items: center;
+
+    & .cash {
+      font-size: 2.2rem;
+      margin-right: 0.45em;
+      font-weight: 700;
+    }
+  }
+
+  & .card__btn {
+    margin-top: 1.5em;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 1.2em;
+    background: var(--primary-two);
+    border-radius: 5px;
+    color: var(--neutral-one);
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  & .card__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.community {
+  & .card__title {
+    font-size: 1.459rem;
+  }
+}
+
+.subscription,
+.about {
+  background: var(--primary-one);
+  color: var(--neutral-one);
+
+  & .card__title,
+  & .card__body {
+    color: var(--neutral-one);
+  }
+}
+
+.about {
+  --primary-one: hsl(179, 62%, 43%);
+  border-radius: 0 0 10px 10px;
+}
+
+@media screen and (min-width: 700px) {
+  
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'community community'
+      'sub about';
+      width: 70%;
+
+    & .card {
+      --padding: 3em;
+    }
+  }
+
+  .card {
+    & .sub-title {
+      font-size: 1.3rem;
+    }
+  }
+
+  .community {
+    grid-area: community;
+    & .card__body {
+      font-size: 1.1rem;
+    }
+  }
+
+  .subscription{
+    grid-area: sub;
+  }
+
+  .about {
+    grid-area: about;
+  }
+
+  .subscription {
+    border-radius: 0 0 0 10px;
+  }
+
+  .about {
+    border-radius: 0 0 10px 0;
+
+    & .card__body {
+      width: 240px;
+    }
+  }
+}
